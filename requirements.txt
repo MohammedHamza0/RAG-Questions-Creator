@@ -14,3 +14,6 @@ uvicorn
 jinja2
 aiofiles
 tiktoken
+cryptography
+fpdf
+
