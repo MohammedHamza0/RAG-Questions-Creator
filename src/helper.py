@@ -183,7 +183,7 @@ def save_text_to_pdf(text, filename):
         pdf.add_font("DejaVu", "", font_path, uni=True)
         pdf.set_font("DejaVu", size=14)
     else:
-        pdf.set_font("Arial", size=12)  # Fallback to Arial if the font is not found
+        pdf.set_font("Arial", size=12)  
 
     # Add the text to the PDF
     for line in text.split('\n'):
