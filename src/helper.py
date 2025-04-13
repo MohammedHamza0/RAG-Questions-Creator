@@ -165,11 +165,12 @@ def user_query(question, num_questions, difficulty_level, question_types, includ
 
 
 
+
 def save_text_to_pdf(text, filename):
-    # Check if the directory exists, if not, create it
+    # Ensure the directory exists, create it if necessary
     dir_name = os.path.dirname(filename)
     if dir_name and not os.path.exists(dir_name):
-        os.makedirs(dir_name)  # Create directory if it doesn't exist
+        os.makedirs(dir_name)
 
     pdf = FPDF()
     pdf.add_page()
@@ -191,5 +192,5 @@ def save_text_to_pdf(text, filename):
     # Save the PDF to the specified file
     pdf.output(filename)
 
-    # Return the file path
+    # Return the file path for further use
     return filename

@@ -8,14 +8,14 @@ from src.helper import (get_pdf_text,
 def main():
     st.set_page_config(page_title="Chat PDFs", page_icon="💬")
     
-     # Session state
+    # Session state
     if "history" not in st.session_state:
         st.session_state.history = []
     if "response" not in st.session_state:
         st.session_state.response = ""
 
     st.header("Exam Questions Generator🧾")
-    st.caption("Hi, I will help you to prepare to you exam..☺")
+    st.caption("Hi, I will help you to prepare for your exam..☺")
 
     with st.sidebar:
         st.title("Menu:")
@@ -56,14 +56,22 @@ def main():
           st.subheader("Generated Questions:")
           st.write(st.session_state.response)
           
-          
           file_name = st.text_input("Write the file name (with .pdf)", value="questions.pdf")
 
           if st.button("Save To PDF"):
                if file_name:
+                    # Save the PDF
                     file_path = save_text_to_pdf(st.session_state.response, filename=file_name)
                     st.success("✅ PDF saved successfully!")
-                    st.write(f"📄 File Path: {file_path}")
+
+                    # Provide a download link for the generated PDF
+                    with open(file_path, "rb") as pdf_file:
+                        st.download_button(
+                            label="Download PDF",
+                            data=pdf_file,
+                            file_name=file_name,
+                            mime="application/pdf"
+                        )
                else:
                     st.warning("⚠️ Please write a file name.")
 
