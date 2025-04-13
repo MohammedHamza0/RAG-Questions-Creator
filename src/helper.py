@@ -166,17 +166,30 @@ def user_query(question, num_questions, difficulty_level, question_types, includ
 
 
 def save_text_to_pdf(text, filename):
+    # Check if the directory exists, if not, create it
+    dir_name = os.path.dirname(filename)
+    if dir_name and not os.path.exists(dir_name):
+        os.makedirs(dir_name)  # Create directory if it doesn't exist
+
     pdf = FPDF()
     pdf.add_page()
+
+    # Define the path for custom font
     font_path = "fonts/DejaVuSans.ttf"
-    
+
+    # Check if the font exists
     if os.path.exists(font_path):  
         pdf.add_font("DejaVu", "", font_path, uni=True)
         pdf.set_font("DejaVu", size=14)
     else:
-        pdf.set_font("Arial", size=12)  
+        pdf.set_font("Arial", size=12)  # Fallback to Arial if the font is not found
 
+    # Add the text to the PDF
     for line in text.split('\n'):
         pdf.multi_cell(0, 10, txt=line)
-    
+
+    # Save the PDF to the specified file
     pdf.output(filename)
+
+    # Return the file path
+    return filename

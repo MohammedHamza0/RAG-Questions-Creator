@@ -61,8 +61,9 @@ def main():
 
           if st.button("Save To PDF"):
                if file_name:
-                    save_text_to_pdf(st.session_state.response, filename=file_name)
+                    file_path = save_text_to_pdf(st.session_state.response, filename=file_name)
                     st.success("✅ PDF saved successfully!")
+                    st.write(f"📄 File Path: {file_path}")
                else:
                     st.warning("⚠️ Please write a file name.")
 
