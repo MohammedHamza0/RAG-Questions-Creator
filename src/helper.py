@@ -168,11 +168,15 @@ def user_query(question, num_questions, difficulty_level, question_types, includ
 def save_text_to_pdf(text, filename):
     pdf = FPDF()
     pdf.add_page()
-    font_path = os.path.join("fonts", "DejaVuSans.ttf")
-    pdf.add_font("DejaVu", "", font_path, uni=True)
-    pdf.set_font("DejaVu", size=12)
+    font_path = "fonts/DejaVuSans.ttf"
+    
+    if os.path.exists(font_path):  
+        pdf.add_font("DejaVu", "", font_path, uni=True)
+        pdf.set_font("DejaVu", size=14)
+    else:
+        pdf.set_font("Arial", size=12)  
 
     for line in text.split('\n'):
-        pdf.multi_cell(0, 10, line)
-
+        pdf.multi_cell(0, 10, txt=line)
+    
     pdf.output(filename)
