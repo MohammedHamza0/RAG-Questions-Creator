@@ -175,22 +175,16 @@ def save_text_to_pdf(text, filename):
     pdf = FPDF()
     pdf.add_page()
 
-    # Define the path for custom font
     font_path = "fonts/DejaVuSans.ttf"
 
-    # Check if the font exists
     if os.path.exists(font_path):  
         pdf.add_font("DejaVu", "", font_path, uni=True)
         pdf.set_font("DejaVu", size=14)
     else:
         pdf.set_font("Arial", size=12)  
-
-    # Add the text to the PDF
+        
     for line in text.split('\n'):
         pdf.multi_cell(0, 10, txt=line)
-
-    # Save the PDF to the specified file
+        
     pdf.output(filename)
-
-    # Return the file path for further use
     return filename

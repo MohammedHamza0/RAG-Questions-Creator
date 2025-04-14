@@ -56,7 +56,7 @@ def main():
           st.subheader("Generated Questions:")
           st.write(st.session_state.response)
           
-          file_name = st.text_input("Write the file name (with .pdf)", value="questions.pdf")
+          file_name = st.text_input("**Write the file name (with .pdf)**", value="questions.pdf")
 
           if st.button("Save To PDF"):
                if file_name:
