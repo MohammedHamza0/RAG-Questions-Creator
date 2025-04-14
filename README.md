@@ -37,8 +37,8 @@ fpdf
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone <[repository-url](https://github.com/MohammedHamza0/RAG-Questions-Creator.git)>
+cd <RAG-Questions-Creator>
 ```
 
 2. Create a virtual environment with Python 3.10:
